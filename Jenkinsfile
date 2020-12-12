@@ -19,7 +19,15 @@ pipeline {
         }
         stage('Deploy-stage'){
             steps{
-                
+                build job: 'deploy-staging'
+            }
+            post{
+                success{
+                    echo 'code deployed to stage'
+                }
+                failure{
+                    echo 'deployment failed'
+                }
             }
         }
     }
